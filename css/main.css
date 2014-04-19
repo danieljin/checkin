@@ -1,0 +1,199 @@
+html, body
+{
+    height: 100%;
+    width: 100%;
+    margin: 0;
+}
+
+body {
+  font-family:'Lato',sans-serif;
+  background-color: #535353;
+}
+
+input, select, textarea, button{font-family:inherit;}
+
+.nav {
+  position: relative;
+  overflow: hidden;
+  height:40px;
+  background:#980000;
+  margin:0 auto;
+  box-shadow: 0px 3px 7px black;
+  z-index: 100;
+}
+
+.nav a {
+  float: left;
+  color:white;
+  text-decoration: none;
+  font-size: 30px;
+  margin-left: 15px;
+  cursor: pointer;
+}
+
+.nav .user {
+  float: right;
+  color:white;
+  text-decoration: none;
+  font-size: 30px;
+}
+
+.container {
+  border-radius: 5px;
+  background-color:#e4e4e4;
+  width: 90%;
+  max-width:1240px;
+  margin: 50px auto 0;
+  padding-bottom: 30px;
+  box-shadow:1px 0 7px #000;
+}
+
+.text {
+  margin:0px auto 20px;
+  width: 600px;
+  text-align: center;
+}
+
+.title {
+  text-align:center;
+  font-size:80px;
+  padding-bottom:10px;
+}
+
+.subtitle {
+  text-align:center;
+  font-size:30px;
+  padding-bottom:10px;
+}
+
+.center {
+  margin:0 auto;
+  min-width:500px;
+  max-width:1000px;
+}
+
+.button {
+  border-radius: 5px;
+  border:1px solid #980000;
+  height:200px;
+  line-height:200px;
+  width:45%;
+  font-size:90px;
+  background:transparent;
+}
+
+#signin {
+  float:left;
+  cursor:pointer;
+  margin-left:10px;
+}
+
+#register {
+  float:right;
+  cursor:pointer;
+  margin-right:10px;
+}
+
+.form {
+  border-radius: 5px;
+  display:table;
+  margin:0 auto;
+  border:1px solid #980000;
+  height:auto;
+  width:100%;
+  max-width:350px;
+  min-width:200px;
+}
+
+.form label {
+  display:inline-block;
+  text-align:center;
+  width:100%;
+  font-weight:500;
+  margin-top:5px;
+}
+
+.radio label {
+  width:auto;
+  font-weight:100;
+  margin-top:5px;
+}
+
+.form input {
+  width:100%;
+  float:left;
+  text-align:center;
+  clear:both;
+  box-sizing: border-box;
+}
+
+.form input[type=radio] {
+  width:auto;
+  float:none;
+}
+
+.form .radio {
+  width:100%;
+  text-align:center;
+}
+
+.form .radio div {
+  display:inline-block;
+}
+
+.form input[type=submit] {
+  margin-top:10px;
+}
+
+.form select {
+  width:100%;
+}
+
+.form label.error{
+  color:red;
+}
+
+.form input.error{
+  border-color: red;
+  border-style: solid;
+}
+
+.form span#errorMessage {
+  color:red;
+  margin-left: 5px;
+}
+
+.group:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.ui-widget-header{
+  background: #980000 !important;
+  color: white;
+}
+table {
+  width: 100%;
+  border-spacing: 0px;
+}
+tbody tr{
+  height: 50px;
+}
+
+.switch-light{
+  margin:0 auto;
+  margin-bottom: 10px;
+  width:100%;
+  max-width:350px;
+  min-width:200px;
+}
+.switch-candy a {
+  background-color: #980000;
+}
+.ui-tabs .ui-tabs-panel {
+  background: #e4e4e4;
+}
+.ui-widget-content {
+  border: none;
+}

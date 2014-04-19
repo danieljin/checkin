@@ -1,0 +1,32 @@
+{
+  "name": "Checkin",
+  "version": "0.0.0",
+  "description": "Checkin application for managing attendees.",
+  "main": "web.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://danieljin@bitbucket.org/danieljin/check-in-api.git"
+  },
+  "keywords": [
+    "checkin",
+    ""
+  ],
+  "author": "Daniel Jin",
+  "license": "BSD",
+  "dependencies": {
+    "express": "~4.0.0",
+    "logfmt": "~1.1.2",
+    "mssql": "~0.5.3",
+    "bcrypt": "~0.7.7",
+    "express-session": "^1.0.2",
+    "cookie-parser": "^1.0.1",
+    "body-parser": "^1.0.2",
+    "validator": "^3.9.0"
+  },
+  "engines": {
+    "node": "0.10.x"
+  }
+}

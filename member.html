@@ -1,0 +1,144 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional">
+
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Lato">
+  <link rel="stylesheet" type="text/css" href="css/jquery-ui-1.10.4.custom.css">
+  <link rel="stylesheet" type="text/css" href="css/toggle-switch.css">
+  <link rel="stylesheet" type="text/css" href="css/main.css">
+  <script type="text/javascript" src="js/jquery-2.0.3.min.js">
+</script>
+  <script type="text/javascript" src="js/jquery.dataTables.min.js">
+</script>
+  <script type="text/javascript" src="js/jquery-ui-1.10.4.custom.min.js">
+</script>
+  <script type="text/javascript" src="js/main.js">
+</script>
+  <script type="text/javascript" src="js/jquery.validate.min.js">
+</script>
+  <script type="text/javascript">
+$(function() {
+    $("#tabs").tabs({
+      beforeActivate: function(event, ui) {
+        if (ui.newTab.find('a').is('#attendanceTab')) {
+          $.ajax({
+            url: "http://localhost:5000/attendance",
+            success: function(data){
+              $('#attendance').dataTable({
+                  "bJQueryUI": true,
+                  "aaData": data,
+                  "bDestroy": true,
+                  "bLengthChange": false,
+                  "aoColumns": [{
+                      "mData": "eventname"
+                  }, {
+                      "mData": "type"
+                  }, {
+                      "mData": "date"
+                  }, {
+                      "mData": "present"
+                  }]
+              });
+            },
+            error: function(data){
+              alert(data);
+            },
+            xhrFields: {
+                withCredentials: true
+            }
+          });
+        }
+      }
+    });
+
+    $.ajax({
+        url: "http://localhost:5000/upcoming",
+        success: function(data) {
+          $("#event").append(function() {
+            return $.map(data, function(el, i) {
+                return '<option value=' + el.eventID + '>' + el.date + ' - ' + el.eventname + ' - ' + el.type + '<\/option>';
+            });
+          });
+        },
+        xhrFields: {
+            withCredentials: true
+        }
+    });
+    $('#eventForm').validate({
+      rules: {
+          eventID: {
+              required: true
+          }
+      },
+      submitHandler: function(form) {
+          $('#errorMessage').text("");
+          $.ajax({
+              type: "POST",
+              url: "http://localhost:5000/signup",
+              data: $(form).serialize(),
+              success: function(data) {
+                  $('#event').val($('#typeselect').prop('defaultSelected'));
+                  $('#eventSuccessMessage').show().delay(1000).fadeOut("slow");
+              },
+              error: function(data) {
+                  $('#errorMessage').text(data.responseText);
+              },
+              xhrFields: {
+                  withCredentials: true
+              }
+          });
+      }
+    });
+
+  });
+  </script>
+
+  <title>Check in</title>
+</head>
+
+<body>
+  <div class="nav"></div>
+
+  <div class="container">
+    <div class="title">
+      Member Portal
+    </div>
+
+    <div id="tabs">
+      <ul>
+        <li><a href="#tabs-1" id="signupTab">Sign up for event</a></li>
+
+        <li><a href="#tabs-2" id="attendanceTab">Attendance</a></li>
+      </ul>
+
+      <div id="tabs-1">
+        <form id="eventForm" class="form" action="">
+          <label>Event:</label> <select name="eventID" id="event">
+            <option value="">
+              Select One...
+            </option>
+          </select> <input type="submit" value="Submit"> <span id="eventSuccessMessage" style="display:none">Sign up was successful.</span> <span id="errorMessage"></span>
+        </form>
+      </div>
+
+      <div id="tabs-2">
+        <div class="table">
+          <table id="attendance" summary="Attendance Tables">
+            <thead>
+              <tr>
+                <th>Event Name</th>
+
+                <th>Event Type</th>
+
+                <th>Event Date</th>
+
+                <th>Present</th>
+              </tr>
+            </thead>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

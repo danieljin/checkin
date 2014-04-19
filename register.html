@@ -1,0 +1,330 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional">
+
+<html>
+<head>
+  <link rel="stylesheet" href="css/main.css" type="text/css">
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Lato">
+  <script type="text/javascript" src="js/jquery-2.0.3.min.js">
+</script>
+  <script type="text/javascript" src="js/jquery.validate.min.js">
+</script>
+  <script type="text/javascript" src="js/main.js">
+</script>
+  <script type="text/javascript">
+  $(function() {
+      $('#emailInput').keyup(function(e){
+        $('#emailInput').removeClass('error');
+        $('#errorMessage').text('');
+      });
+      $('#registerForm').validate({
+        rules: {
+          firstname: {
+              required: true
+          },
+          lastname: {
+              required: true
+          },
+          birthdate: {
+              required: true,
+              date: true
+          },
+          marital: {
+              required: true
+          },
+          address: {
+              required: true
+          },
+          city: {
+              required: true
+          },
+          state: {
+              required: true
+          },
+          email: {
+              required: true,
+              email: true
+          },
+          password: {
+              required: true,
+              minlength: 6
+          }
+        },
+        focusInvalid: false,
+        submitHandler: function (form) {
+          $.ajax({
+            type: "POST",
+            url: "http://localhost:5000/register",
+            data: $(form).serialize(),
+            success: function(data){
+              window.location = "signin.html";
+            },
+            error: function(data){
+              if (data.status == 409) {
+                $('#emailInput').addClass('error');
+                $('#errorMessage').text(data.responseText);
+              }
+            },
+            xhrFields: {
+               withCredentials: true
+            }
+          });
+        }
+      });
+    });
+  </script>
+
+  <title>Registration Page</title>
+</head>
+
+<body>
+  <div class="nav">
+  </div>
+
+  <div class="container">
+    <div class="title">
+      Register
+    </div><!-- ADD TOOL TIPS AND CHECKS -->
+
+    <form id="registerForm" class="form" action="">
+      <label>First Name:</label><input type="text" name="firstname"> <label>Last Name:</label><input type="text" name="lastname"> <label>Birth Date:</label><input type="text" name="birthdate" placeholder="MM/DD/YYYY"> <label>Gender:</label>
+      <div id="genderRadio" class="radio">
+        <div>
+          <input type="radio" name="gender" value="male" id="male" class="required"> <label for="male">Male</label>
+        </div>
+
+        <div>
+          <input type="radio" name="gender" value="female" id="female"> <label for="female">Female</label>
+        </div>
+      </div><label for="gender" class="error" style="display:none;">Please choose one.</label> <label>Martial Status:</label> <select name="marital">
+        <option value="">
+          Select One...
+        </option>
+
+        <option value="single">
+          Single
+        </option>
+
+        <option value="married">
+          Married
+        </option>
+
+        <option value="widowed">
+          Widowed
+        </option>
+
+        <option value="divorced">
+          Divorced
+        </option>
+      </select> <label>Street Address:</label><input type="text" name="address"> <label>City:</label><input type="text" name="city"> <label>State:</label> <select name="state">
+        <option value="">
+          Choose one...
+        </option>
+
+        <option value="AL">
+          AL
+        </option>
+
+        <option value="AK">
+          AK
+        </option>
+
+        <option value="AZ">
+          AZ
+        </option>
+
+        <option value="AR">
+          AR
+        </option>
+
+        <option value="CA">
+          CA
+        </option>
+
+        <option value="CO">
+          CO
+        </option>
+
+        <option value="CT">
+          CT
+        </option>
+
+        <option value="DE">
+          DE
+        </option>
+
+        <option value="DC">
+          DC
+        </option>
+
+        <option value="FL">
+          FL
+        </option>
+
+        <option value="GA">
+          GA
+        </option>
+
+        <option value="HI">
+          HI
+        </option>
+
+        <option value="ID">
+          ID
+        </option>
+
+        <option value="IL">
+          IL
+        </option>
+
+        <option value="IN">
+          IN
+        </option>
+
+        <option value="IA">
+          IA
+        </option>
+
+        <option value="KS">
+          KS
+        </option>
+
+        <option value="KY">
+          KY
+        </option>
+
+        <option value="LA">
+          LA
+        </option>
+
+        <option value="ME">
+          ME
+        </option>
+
+        <option value="MD">
+          MD
+        </option>
+
+        <option value="MA">
+          MA
+        </option>
+
+        <option value="MI">
+          MI
+        </option>
+
+        <option value="MN">
+          MN
+        </option>
+
+        <option value="MS">
+          MS
+        </option>
+
+        <option value="MO">
+          MO
+        </option>
+
+        <option value="MT">
+          MT
+        </option>
+
+        <option value="NE">
+          NE
+        </option>
+
+        <option value="NV">
+          NV
+        </option>
+
+        <option value="NH">
+          NH
+        </option>
+
+        <option value="NJ">
+          NJ
+        </option>
+
+        <option value="NM">
+          NM
+        </option>
+
+        <option value="NY">
+          NY
+        </option>
+
+        <option value="NC">
+          NC
+        </option>
+
+        <option value="ND">
+          ND
+        </option>
+
+        <option value="OH">
+          OH
+        </option>
+
+        <option value="OK">
+          OK
+        </option>
+
+        <option value="OR">
+          OR
+        </option>
+
+        <option value="PA">
+          PA
+        </option>
+
+        <option value="RI">
+          RI
+        </option>
+
+        <option value="SC">
+          SC
+        </option>
+
+        <option value="SD">
+          SD
+        </option>
+
+        <option value="TN">
+          TN
+        </option>
+
+        <option value="TX">
+          TX
+        </option>
+
+        <option value="UT">
+          UT
+        </option>
+
+        <option value="VT">
+          VT
+        </option>
+
+        <option value="VA">
+          VA
+        </option>
+
+        <option value="WA">
+          WA
+        </option>
+
+        <option value="WV">
+          WV
+        </option>
+
+        <option value="WI">
+          WI
+        </option>
+
+        <option value="WY">
+          WY
+        </option>
+      </select> <label>Email Address:</label><input id="emailInput" type="text" name="email" placeholder="example@example.com"> <span id="errorMessage"></span> <label>Password:</label><input type="password" name="password"> <input type="submit" value="Submit"> <input type="button" value="Cancel" onclick="location.href='index.html'">
+    </form>
+  </div>
+</body>
+</html>

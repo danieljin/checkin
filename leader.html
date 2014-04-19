@@ -1,0 +1,158 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Lato">
+  <link rel="stylesheet" type="text/css" href="css/jquery-ui-1.10.4.custom.css">
+  <link rel="stylesheet" type="text/css" href="css/toggle-switch.css">
+  <link rel="stylesheet" type="text/css" href="css/main.css">
+  <script type="text/javascript" src="js/jquery-2.0.3.min.js">
+</script>
+  <script type="text/javascript" src="js/jquery.dataTables.min.js">
+</script>
+  <script type="text/javascript" src="js/jquery-ui-1.10.4.custom.min.js">
+</script>
+  <script type="text/javascript" src="js/main.js">
+</script>
+  <script type="text/javascript" src="js/jquery.validate.min.js">
+</script>
+  <script type="text/javascript" src="js/leader.js">
+</script>
+
+  <title>Check in</title>
+</head>
+
+<body>
+  <div class="nav"></div>
+
+  <div class="container">
+    <div class="title">
+      Leader Portal
+    </div>
+
+    <div id="tabs">
+      <ul>
+        <li><a href="#tabs-1" id="membersTab">Members</a></li>
+
+        <li><a href="#tabs-4" id="attendanceTab">Attendance</a></li>
+
+        <li><a href="#tabs-5" id="createEventTab">Create Event</a></li>
+
+        <li><a href="#tabs-6" id="createGroupTab">Create Group</a></li>
+
+        <li><a href="#tabs-3" id="assignTab">Assign Members to Group</a></li>
+      </ul>
+
+      <div id="tabs-1">
+        <div class="table">
+          <table id="users" summary="User Table">
+            <thead>
+              <tr>
+                <th>User ID</th>
+
+                <th>First Name</th>
+
+                <th>Last Name</th>
+
+                <th>Address</th>
+
+                <th>City</th>
+
+                <th>State</th>
+
+                <th>Email</th>
+
+                <th>Marital Status</th>
+
+                <th>Gender</th>
+
+                <th>Birth Date</th>
+
+                <th>Group Name</th>
+              </tr>
+            </thead>
+          </table>
+        </div>
+      </div>
+
+      <div id="tabs-2"></div>
+
+      <div id="tabs-3">
+        <label class="switch-light switch-candy" onclick=""><input type="checkbox" id="checkbox"> <span><span>My Members</span> <span>Unassigned Members</span></span></label>
+
+        <form id="assignForm" class="form" action="">
+          <label>Name:</label><input type="text" id="membername" name="membername"> <input type="text" name="memberID" id="memberID" style="display:none"> <label>Group Name:</label><input type="text" id="groupname" name="groupname"> <input type="text" name="groupID" id="groupID" style="display:none"> <input type="submit" value="Submit"> <span id="assignSuccessMessage" style="display:none">Member has been added.</span>
+        </form>
+      </div>
+
+      <div id="tabs-4">
+        <div class="eventTable">
+          <div class="subtitle">
+            Events
+          </div>
+
+          <table id="events" summary="Event Table">
+            <thead>
+              <tr>
+                <th>Event Name</th>
+
+                <th>Event Type</th>
+
+                <th>Event Date</th>
+
+                <th>Event ID</th>
+              </tr>
+            </thead>
+          </table>
+        </div>
+
+        <div class="attendanceTable" style="display:none;">
+          <div class="subtitle">
+            Attendance
+          </div><button id="back" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only"><span class="ui-button-text">Back</span></button>
+
+          <table id="attendance" summary="Attendance Table">
+            <thead>
+              <tr>
+                <th>ID</th>
+
+                <th>Member Name</th>
+
+                <th>Present</th>
+              </tr>
+            </thead>
+          </table>
+        </div>
+      </div>
+
+      <div id="tabs-5">
+        <form id="eventForm" class="form" action="">
+          <label>Event Name:</label><input type="text" name="eventname" id="eventname"> <label>Event Type:</label> <select name="eventtype" id="typeselect">
+            <option value="">
+              Select One...
+            </option>
+
+            <option value="seminar">
+              Seminar
+            </option>
+
+            <option value="class">
+              Class
+            </option>
+
+            <option value="workshop">
+              Workshop
+            </option>
+          </select> <label>Event Date:</label><input type="text" name="eventdate" id="datepicker"> <input type="submit" value="Submit"> <span id="eventSuccessMessage" style="display:none">Event has been created.</span>
+        </form>
+      </div>
+
+      <div id="tabs-6">
+        <form id="groupForm" class="form" action="">
+          <label>Group Name:</label><input type="text" id="groupname2" name="groupname"> <label>Leader Name:</label><input type="text" id="leadername" name="leadername"> <input type="text" name="userID" id="userID" style="display:none"> <input type="submit" value="Submit"> <span id="groupSuccessMessage" style="display:none">Group has been created.</span>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
